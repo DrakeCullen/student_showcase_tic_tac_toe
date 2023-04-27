@@ -15,4 +15,4 @@ while running:
         if event.type == QUIT:
             running = False
 
-    pygame.display.update()fd
+    pygame.display.update()
