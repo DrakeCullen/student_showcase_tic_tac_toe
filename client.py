@@ -8,7 +8,7 @@ s = socket.socket()
 port = 12345
 
 # connect to the server on local computer
-s.connect(("192.168.122.1", port))
+s.connect(("63.238.225.56", port))
 
 # receive data from the server and decoding to get the string.
 print(s.recv(1024).decode())
