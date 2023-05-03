@@ -149,11 +149,14 @@ while running:
         if event.type == MOUSEBUTTONDOWN:
             if player_type == 1:
                 x, y = pygame.mouse.get_pos()
-                game.checkBoard(x, y, player_type)
+                game.checkBoard(x, y, player_type)    
+                server.recvTest()
             else:
                 # receive data from the client
+                x, y = pygame.mouse.get_pos()
+                game.checkBoard(x, y, player_type)
                 client.sendTest()
-                server.recvTest()
+                
         if event.type == KEYDOWN:
             if event.key == pygame.K_SPACE:
                 print("stuff happened")
