@@ -16,6 +16,9 @@ class socky_boy:
         # receive data from the server and decoding to get the string.
         print(self.s.recv(1024).decode())
     
+    def sendTest(self):
+        self.s.send("test".encode())
+
     def close(self):
         self.s.close()
 

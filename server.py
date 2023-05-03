@@ -29,6 +29,9 @@ class server_boy:
 
     def sendHi(self):
         self.c.send('Thank you for connecting'.encode())
+
+    def recvTest(self):
+        print(self.c.recv(1024).decode())
         
     def close(self):
         self.s.close()

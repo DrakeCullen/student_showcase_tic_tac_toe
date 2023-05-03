@@ -89,7 +89,13 @@ class Game:
             return True
         return False
 
-    def checkBoard(self, x, y):
+    def checkBoard(self, x, y, player_type):
+        if player_type == 1:
+            if self.isPlayerOne == False:
+                return
+        elif player_type == 2:
+            if self.isPlayerOne == True:
+                return
         for square in squares:
             update, num = square.isClicked(x, y, self.isPlayerOne)
             if update:
@@ -127,8 +133,10 @@ running = True
 
 if player_type == "server":
     server = server_boy()
+    player_type = 1
 elif player_type == "client":
     client = socky_boy()
+    player_type = 2
 else:
     print("Invalid player type")
     exit()
@@ -139,11 +147,22 @@ while running:
             running = False
 
         if event.type == MOUSEBUTTONDOWN:
-            x, y = pygame.mouse.get_pos()
-            game.checkBoard(x, y)
+            if player_type == 1:
+                x, y = pygame.mouse.get_pos()
+                game.checkBoard(x, y, player_type)
+            else:
+                # receive data from the client
+                client.sendTest()
+                server.recvTest()
         if event.type == KEYDOWN:
             if event.key == pygame.K_SPACE:
                 print("stuff happened")
                 server.getConnection()
                 server.sendHi()
+            if event.key == pygame.K_a and player_type == 2:
+                print("client attempted to send")
+                client.sendTest()
+            if event.key == pygame.K_a and player_type == 1:
+                server.recvTest()
+            
         pygame.display.update()
