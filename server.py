@@ -9,7 +9,7 @@ class server_boy:
         self.s = socket.socket()		
 
         # reserve a port on your computer in our
-        port = 12345			
+        port = 12343			
 
         # Next bind to the port
         # we have not typed any ip in the ip field

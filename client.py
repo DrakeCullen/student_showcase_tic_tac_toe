@@ -8,7 +8,7 @@ class socky_boy:
         self.s = socket.socket()
 
         # Define the port on which you want to connect
-        port = 12345
+        port = 12343
 
         # connect to the server on local computer
         self.s.connect(("10.5.108.240", port))
