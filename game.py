@@ -152,11 +152,13 @@ while running:
                 x, y = pygame.mouse.get_pos()
                 return_value = game.checkBoard(x, y, player_type)
                 if return_value != -1:
+                    pygame.display.update()
                     server.recvTest()
             else:
                 x, y = pygame.mouse.get_pos()
                 return_value = game.checkBoard(x, y, player_type)
                 if return_value != -1:
+                    pygame.display.update()
                     client.sendTest()
 
         if event.type == KEYDOWN:
