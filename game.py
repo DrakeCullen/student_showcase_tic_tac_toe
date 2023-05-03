@@ -33,7 +33,7 @@ class Square:
             and clickY <= self.y + SQUARE_WIDTH
             and self.clicked == False
         ):
-            print("dfjsklfddjksfksjdkjlflkjfdsajksdfakjlfjklfdsakjlfjfsdjks")
+            print(f" self.x {self.x} self.y {self.y}")
             if isPlayerOne == True:
                 pygame.draw.circle(
                     screen,
@@ -164,6 +164,7 @@ while running:
                         squares[3 * num[0] + num[1]].y,
                         player_type,
                     )
+                    pygame.display.update()
                     # squares[3*num[0]+num[1]].isClicked(x, y, game.isPlayerOne)
                     game.update_board(responce)
                     # game.isPlayerOne = not game.isPlayerOne
@@ -181,6 +182,7 @@ while running:
                         squares[3 * num[0] + num[1]].y,
                         player_type,
                     )
+                    pygame.display.update()
                     # squares[3*num[0]+num[1]].isClicked(x, y, game.isPlayerOne)
                     game.update_board(responce)
                     # game.isPlayerOne = not game.isPlayerOne
@@ -194,6 +196,7 @@ while running:
                 responce = client.awaitMove()
                 print("did we get here")
                 game.update_board(responce)
+                pygame.display.update()
                 # game.isPlayerOne = not game.isPlayerOne
                 print(responce)
         pygame.display.update()
