@@ -9,7 +9,6 @@ HEIGHT = 500
 OFFSET_LEFT = WIDTH / 3
 OFFSET_LEFT = HEIGHT / 3
 SQUARE_WIDTH = 70
-isPlayerOne = True
 
 
 class Square:
@@ -59,12 +58,13 @@ class Square:
 
 class Game:
     def __init__(self):
+        self.reset()
+
+    def reset(self):
+        draw_squares()
         self.isRunning = True
         self.board = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
         self.isPlayerOne = True
-
-    def reset(self):
-        self.__init__
 
     def is_over(self):
         # check if any row is filled or any column is filled or any diagonal is filled
@@ -82,6 +82,8 @@ class Game:
             return True
         elif self.board[0][0] == self.board[1][1] == self.board[2][2] != 0:
             return True
+        elif self.board[2][0] == self.board[1][1] == self.board[0][2] != 0:
+            return True
         return False
 
     def checkBoard(self, x, y):
@@ -94,21 +96,26 @@ class Game:
                     print("Game Over")
                     self.reset()
 
-        # print(self.board)
-
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 squares = []
 
-for i in range(3):
-    for j in range(3):
-        x = i * SQUARE_WIDTH + OFFSET_LEFT
-        y = j * SQUARE_WIDTH + OFFSET_LEFT
-        square = Square(x, y, i, j)
-        squares.append(square)
-        pygame.draw.rect(
-            screen, (203, 234, 233), Rect(x, y, SQUARE_WIDTH - 10, SQUARE_WIDTH - 10)
-        )
+
+def draw_squares():
+    print("Drawing Squares")
+    squares.clear()
+    for i in range(3):
+        for j in range(3):
+            x = i * SQUARE_WIDTH + OFFSET_LEFT
+            y = j * SQUARE_WIDTH + OFFSET_LEFT
+            square = Square(x, y, i, j)
+            squares.append(square)
+            pygame.draw.rect(
+                screen,
+                (203, 234, 233),
+                Rect(x, y, SQUARE_WIDTH - 10, SQUARE_WIDTH - 10),
+            )
+
 
 game = Game()
 running = True
@@ -120,4 +127,4 @@ while running:
         if event.type == MOUSEBUTTONDOWN:
             x, y = pygame.mouse.get_pos()
             game.checkBoard(x, y)
-    pygame.display.update()
+        pygame.display.update()
