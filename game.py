@@ -33,6 +33,7 @@ class Square:
             and clickY <= self.y + SQUARE_WIDTH
             and self.clicked == False
         ):
+            print("dfjsklfddjksfksjdkjlflkjfdsajksdfakjlfjklfdsakjlfjfsdjks")
             if isPlayerOne == True:
                 pygame.draw.circle(
                     screen,
