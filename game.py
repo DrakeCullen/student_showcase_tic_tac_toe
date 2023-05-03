@@ -154,7 +154,8 @@ while running:
                 if return_value != -1:
                     pygame.display.update()
                     server.sendMove()
-                    server.awaitMove()
+                    responce = server.awaitMove()
+                    print(responce)
                     # server.recvTest()
             else:
                 x, y = pygame.mouse.get_pos()
@@ -162,7 +163,8 @@ while running:
                 if return_value != -1:
                     pygame.display.update()
                     client.sendMove()
-                    client.awaitMove()
+                    responce = client.awaitMove()
+                    print(responce)
                     # client.sendTest()
 
         if event.type == KEYDOWN:
@@ -173,7 +175,8 @@ while running:
             if event.key == pygame.K_a and player_type == 2:
                 print("client attempted to send")
                 client.sendTest()
-                client.awaitMove()
+                responce = client.awaitMove()
+                print(responce)
             if event.key == pygame.K_a and player_type == 1:
                 server.recvTest()
 
