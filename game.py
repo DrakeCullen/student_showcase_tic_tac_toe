@@ -153,7 +153,7 @@ while running:
                 if return_value != -1:
                     pygame.display.update()
                     print("num is " + str(num))
-                    server.sendMove(num[0],num[1])
+                    server.sendMove(num)
                     responce = server.awaitMove()
                     print(responce)
                     # server.recvTest()
@@ -162,7 +162,7 @@ while running:
                 return_value, num = game.checkBoard(x, y, player_type)
                 if return_value != -1:
                     pygame.display.update()
-                    client.sendMove(num[0], num[1])
+                    client.sendMove(num)
                     responce = client.awaitMove()
                     print(responce)
                     # client.sendTest()
