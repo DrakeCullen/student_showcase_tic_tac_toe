@@ -163,7 +163,7 @@ while running:
                     _, _ = game.checkBoard(
                         squares[3 * responce[0] + responce[1]].x,
                         squares[3 * responce[0] + responce[1]].y,
-                        player_type,
+                        not player_type,
                     )
                     pygame.display.update()
                     # squares[3*num[0]+num[1]].isClicked(x, y, game.isPlayerOne)
@@ -181,7 +181,7 @@ while running:
                     _, _ = game.checkBoard(
                         squares[3 * responce[0] + responce[1]].x,
                         squares[3 * responce[0] + responce[1]].y,
-                        player_type,
+                        not player_type,
                     )
                     pygame.display.update()
                     # squares[3*num[0]+num[1]].isClicked(x, y, game.isPlayerOne)
@@ -201,7 +201,7 @@ while running:
                 _, _ = game.checkBoard(
                     squares[3 * responce[0] + responce[1]].x,
                     squares[3 * responce[0] + responce[1]].y,
-                    player_type,
+                    not player_type,
                 )
                 pygame.display.update()
                 # game.isPlayerOne = not game.isPlayerOne
