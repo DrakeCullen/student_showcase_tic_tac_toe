@@ -155,6 +155,7 @@ while running:
                     print("num is " + str(num))
                     server.sendMove(num)
                     responce = server.awaitMove()
+                    game.isPlayerOne = not game.isPlayerOne
                     print(responce)
                     # server.recvTest()
             else:
@@ -164,6 +165,7 @@ while running:
                     pygame.display.update()
                     client.sendMove(num)
                     responce = client.awaitMove()
+                    game.isPlayerOne = not game.isPlayerOne
                     print(responce)
                     # client.sendTest()
 
@@ -176,6 +178,7 @@ while running:
                 print("client attempted to send")
                 client.sendTest()
                 responce = client.awaitMove()
+                game.isPlayerOne = not game.isPlayerOne
                 print(responce)
             if event.key == pygame.K_a and player_type == 1:
                 server.recvTest()
