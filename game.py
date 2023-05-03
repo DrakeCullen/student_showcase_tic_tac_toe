@@ -116,31 +116,34 @@ def draw_squares():
             )
 
 
-def __main__():
-    player_type = sys.argv[1]
-
-    game = Game()
-    running = True
-    if player_type == 'server':
-        server = server_boy()
-    elif player_type == 'client':
-        client = socky_boy()
-    else:
-        print("Invalid player type")
-        return -1
+if len(sys.argv) < 2:
+    print("You need to specify server or client") 
+    exit()
     
-    
-    while running:
-        for event in pygame.event.get():
-            if event.type == QUIT:
-                running = False
+player_type = sys.argv[1]
+print(player_type)
+game = Game()
+running = True
 
-            if event.type == MOUSEBUTTONDOWN:
-                x, y = pygame.mouse.get_pos()
-                game.checkBoard(x, y)
-            if event.type == KEYDOWN:
-                if event.key == pygame.K_SPACE:
-                    print("stuff happened")
-                    server.getConnection()
-                    server.sendHi()
-            pygame.display.update()
+if player_type == "server":
+    server = server_boy()
+elif player_type == "client":
+    client = socky_boy()
+else:
+    print("Invalid player type")
+    exit()
+
+while running:
+    for event in pygame.event.get():
+        if event.type == QUIT:
+            running = False
+
+        if event.type == MOUSEBUTTONDOWN:
+            x, y = pygame.mouse.get_pos()
+            game.checkBoard(x, y)
+        if event.type == KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                print("stuff happened")
+                server.getConnection()
+                server.sendHi()
+        pygame.display.update()
