@@ -208,7 +208,7 @@ while running:
                 )
                 pygame.display.update() """
                 square = squares[3 * responce[0] + responce[1]]
-                square.isClicked(square.x, square.y, game.isPlayerOne)
+                square.isClicked(square.x, square.y, not game.isPlayerOne)
                 pygame.display.update()
                 # game.isPlayerOne = not game.isPlayerOne
                 print(responce)
