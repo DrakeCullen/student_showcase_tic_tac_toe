@@ -158,7 +158,7 @@ while running:
                     print("num is " + str(num))
                     server.sendMove(num)
                     responce = server.awaitMove()
-                    squares[0].isClicked(x, y, game.isPlayerOne)
+                    squares[3*num[0]+num[1]].isClicked(x, y, game.isPlayerOne)
                     game.update_board(responce)
                     # game.isPlayerOne = not game.isPlayerOne
                     print("responce " + str(responce))
@@ -170,7 +170,7 @@ while running:
                     pygame.display.update()
                     client.sendMove(num)
                     responce = client.awaitMove()
-                    squares[0].isClicked(x, y, game.isPlayerOne)
+                    squares[3*num[0]+num[1]].isClicked(x, y, game.isPlayerOne)
                     game.update_board(responce)
                     # game.isPlayerOne = not game.isPlayerOne
                     print(responce)
