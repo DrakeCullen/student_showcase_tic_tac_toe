@@ -92,10 +92,10 @@ class Game:
     def checkBoard(self, x, y, player_type):
         if player_type == 1:
             if self.isPlayerOne == False:
-                return
+                return -1
         elif player_type == 2:
             if self.isPlayerOne == True:
-                return
+                return -1
         for square in squares:
             update, num = square.isClicked(x, y, self.isPlayerOne)
             if update:
@@ -104,6 +104,7 @@ class Game:
                 if self.is_over():
                     print("Game Over")
                     self.reset()
+        return 0
 
 
 def draw_squares():
@@ -127,7 +128,6 @@ if len(sys.argv) < 2:
     exit()
     
 player_type = sys.argv[1]
-print(player_type)
 game = Game()
 running = True
 
@@ -149,13 +149,15 @@ while running:
         if event.type == MOUSEBUTTONDOWN:
             if player_type == 1:
                 x, y = pygame.mouse.get_pos()
-                game.checkBoard(x, y, player_type)    
-                server.recvTest()
+                return_value = game.checkBoard(x, y, player_type)    
+                if return_value != -1:
+                    server.recvTest()
             else:
                 # receive data from the client
                 x, y = pygame.mouse.get_pos()
-                game.checkBoard(x, y, player_type)
-                client.sendTest()
+                return_value = game.checkBoard(x, y, player_type)
+                if return_value != -1:
+                    client.sendTest()
                 
         if event.type == KEYDOWN:
             if event.key == pygame.K_SPACE:
