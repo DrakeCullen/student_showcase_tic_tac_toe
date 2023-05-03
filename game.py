@@ -166,7 +166,8 @@ while running:
                         game.isPlayerOne,
                     )
                     pygame.display.update() """
-                    squares[3*responce[0]+responce[1]].isClicked(x, y, game.isPlayerOne)
+                    square = squares[3 * responce[0] + responce[1]]
+                    square.isClicked(square.x, square.y, game.isPlayerOne)
                     pygame.display.update()
                     game.update_board(responce)
                     # game.isPlayerOne = not game.isPlayerOne
@@ -184,7 +185,8 @@ while running:
                         squares[3 * responce[0] + responce[1]].y,
                         not player_type,
                     ) """
-                    squares[3*responce[0]+responce[1]].isClicked(x, y, game.isPlayerOne)
+                    square = squares[3 * responce[0] + responce[1]]
+                    square.isClicked(square.x, square.y, game.isPlayerOne)
                     pygame.display.update()
                     game.update_board(responce)
                     # game.isPlayerOne = not game.isPlayerOne
@@ -205,7 +207,8 @@ while running:
                     not player_type,
                 )
                 pygame.display.update() """
-                squares[3*responce[0]+responce[1]].isClicked(x, y, game.isPlayerOne)
+                square = squares[3 * responce[0] + responce[1]]
+                square.isClicked(square.x, square.y, game.isPlayerOne)
                 pygame.display.update()
                 # game.isPlayerOne = not game.isPlayerOne
                 print(responce)
