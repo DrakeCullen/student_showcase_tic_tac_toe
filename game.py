@@ -159,7 +159,7 @@ while running:
                     server.sendMove(num)
                     responce = server.awaitMove()
                     game.update_board(responce)
-                    game.isPlayerOne = not game.isPlayerOne
+                    #game.isPlayerOne = not game.isPlayerOne
                     print("responce " + str(responce))
             else:
                 x, y = pygame.mouse.get_pos()
@@ -170,7 +170,7 @@ while running:
                     client.sendMove(num)
                     responce = client.awaitMove()
                     game.update_board(responce)
-                    game.isPlayerOne = not game.isPlayerOne
+                    #game.isPlayerOne = not game.isPlayerOne
                     print(responce)
 
         if event.type == KEYDOWN:
