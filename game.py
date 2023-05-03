@@ -152,30 +152,28 @@ while running:
                 return_value, num = game.checkBoard(x, y, player_type)
                 if return_value != -1:
                     pygame.display.update()
-                    print("num is " + str(num))
+                   
                     server.sendMove(num)
                     responce = server.awaitMove()
                     game.isPlayerOne = not game.isPlayerOne
-                    print(responce)
+                    print("big daddy pizza " + responce)
                     # server.recvTest()
             else:
                 x, y = pygame.mouse.get_pos()
                 return_value, num = game.checkBoard(x, y, player_type)
                 if return_value != -1:
+                    print("num is " + str(num))
                     pygame.display.update()
                     client.sendMove(num)
                     responce = client.awaitMove()
                     game.isPlayerOne = not game.isPlayerOne
                     print(responce)
-                    # client.sendTest()
 
         if event.type == KEYDOWN:
             if event.key == pygame.K_SPACE:
-                print("stuff happened")
                 server.getConnection()
                 server.sendHi()
             if event.key == pygame.K_a and player_type == 2:
-                print("client attempted to send")
                 client.sendTest()
                 responce = client.awaitMove()
                 game.isPlayerOne = not game.isPlayerOne
