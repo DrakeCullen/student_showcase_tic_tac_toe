@@ -185,5 +185,4 @@ while running:
                 game.update_board(responce)
                 #game.isPlayerOne = not game.isPlayerOne
                 print(responce)
-        print("BROKEY")
         pygame.display.update()
