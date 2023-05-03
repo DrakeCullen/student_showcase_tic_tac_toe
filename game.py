@@ -33,8 +33,9 @@ class Square:
             and clickY <= self.y + SQUARE_WIDTH
             and self.clicked == False
         ):
-            print(f" self.x {self.x} self.y {self.y}")
+            
             if isPlayerOne == True:
+                print(f"draw circle self.x {self.x} self.y {self.y}")
                 pygame.draw.circle(
                     screen,
                     (255, 0, 0),
@@ -42,6 +43,7 @@ class Square:
                     SQUARE_WIDTH / 2 - 10,
                 )
             else:
+                print(f"draw x self.x {self.x} self.y {self.y}")
                 pygame.draw.line(
                     screen,
                     (255, 0, 0),
