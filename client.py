@@ -24,7 +24,7 @@ class socky_boy:
         self.s.close()
 
     def sendMove(self, num):
-        self.s.send((str(num[0] + ',' + str(num[1]))).encode())
+        self.s.send((str(num[0]) + ',' + str(num[1])).encode())
 
     def awaitMove(self):
         return self.s.recv(1024).decode().split(',')

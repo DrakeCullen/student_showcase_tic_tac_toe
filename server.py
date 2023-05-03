@@ -33,7 +33,7 @@ class server_boy:
         print(self.c.recv(1024).decode())
 
     def sendMove(self, num):
-        self.c.send((num[0] + "," + str(num[1])).encode())
+        self.c.send((str(num[0]) + "," + str(num[1])).encode())
 
     def awaitMove(self):
         return self.s.recv(1024).decode().split(",")
