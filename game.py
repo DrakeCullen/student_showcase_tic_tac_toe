@@ -179,8 +179,9 @@ while running:
                 server.sendHi()
             if event.key == pygame.K_a and player_type == 2:
                 responce = client.awaitMove()
+                print("did we get here")
                 game.update_board(responce)
                 #game.isPlayerOne = not game.isPlayerOne
                 print(responce)
-
+        print("BROKEY")
         pygame.display.update()
