@@ -1,5 +1,6 @@
 import pygame
-
+from server import server_boy
+from client import socky_boy
 from pygame.locals import *
 
 pygame.init()
@@ -9,6 +10,8 @@ HEIGHT = 500
 OFFSET_LEFT = WIDTH / 3
 OFFSET_LEFT = HEIGHT / 3
 SQUARE_WIDTH = 70
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
+squares = []
 
 
 class Square:
@@ -67,7 +70,6 @@ class Game:
         self.isPlayerOne = True
 
     def is_over(self):
-        # check if any row is filled or any column is filled or any diagonal is filled
         if self.board[0][0] == self.board[0][1] == self.board[0][2] != 0:
             return True
         elif self.board[1][0] == self.board[1][1] == self.board[1][2] != 0:
@@ -97,10 +99,6 @@ class Game:
                     self.reset()
 
 
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
-squares = []
-
-
 def draw_squares():
     print("Drawing Squares")
     squares.clear()
@@ -119,6 +117,11 @@ def draw_squares():
 
 game = Game()
 running = True
+server = server_boy()
+client = socky_boy()
+server.getConnection()
+server.sendHi()
+
 while running:
     for event in pygame.event.get():
         if event.type == QUIT:

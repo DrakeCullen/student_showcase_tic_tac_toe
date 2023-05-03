@@ -1,39 +1,49 @@
 # first of all import the socket library
 import socket			
 
-# next create a socket object
-s = socket.socket()		
-print ("Socket successfully created")
 
-# reserve a port on your computer in our
-# case it is 12345 but it can be anything
-port = 12344			
 
-# Next bind to the port
-# we have not typed any ip in the ip field
-# instead we have inputted an empty string
-# this makes the server listen to requests
-# coming from other computers on the network
-s.bind(('', port))		
-print ("socket binded to %s" %(port))
+class server_boy:
+    def __init__(self) -> None:
+        # next create a socket object
+        self.s = socket.socket()		
 
-# put the socket into listening mode
-s.listen(5)	
-print ("socket is listening")		
+        # reserve a port on your computer in our
+        port = 12344			
 
-# a forever loop until we interrupt it or
-# an error occurs
-while True:
+        # Next bind to the port
+        # we have not typed any ip in the ip field
+        # instead we have inputted an empty string
+        # this makes the server listen to requests
+        # coming from other computers on the network
+        self.s.bind(('', port))		
+        print ("socket binded to %s" %(port))
 
-    # Establish connection with client.
-    c, addr = s.accept()	
-    print ('Got connection from', addr )
+        # put the socket into listening mode
+        self.s.listen(5)	
+        print ("socket is listening")	
+    	
+    def getConnection(self):
+        self.c, addr = self.s.accept()	
+        print ('Got connection from', addr )
 
-    # send a thank you message to the client. encoding to send byte type.
-    c.send('Thank you for connecting'.encode())
+    def sendHi(self):
+        self.c.send('Thank you for connecting'.encode())
+        
+    def close(self):
+        self.s.close()
+    # a forever loop until we interrupt it or
+    # an error occurs
+    # while True:
 
-    # Close the connection with the client
-    c.close()
+    #     # Establish connection with client.
+        
 
-    # Breaking once connection closed
-    break
+    #     # send a thank you message to the client. encoding to send byte type.
+    #     c.send('Thank you for connecting'.encode())
+
+    #     # Close the connection with the client
+    #     c.close()
+
+    #     # Breaking once connection closed
+    #  break
