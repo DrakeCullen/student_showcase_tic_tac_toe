@@ -153,13 +153,17 @@ while running:
                 return_value = game.checkBoard(x, y, player_type)
                 if return_value != -1:
                     pygame.display.update()
-                    server.recvTest()
+                    server.sendMove()
+                    server.awaitMove()
+                    # server.recvTest()
             else:
                 x, y = pygame.mouse.get_pos()
                 return_value = game.checkBoard(x, y, player_type)
                 if return_value != -1:
                     pygame.display.update()
-                    client.sendTest()
+                    client.sendMove()
+                    client.awaitMove()
+                    # client.sendTest()
 
         if event.type == KEYDOWN:
             if event.key == pygame.K_SPACE:
@@ -169,6 +173,7 @@ while running:
             if event.key == pygame.K_a and player_type == 2:
                 print("client attempted to send")
                 client.sendTest()
+                client.awaitMove()
             if event.key == pygame.K_a and player_type == 1:
                 server.recvTest()
 

@@ -9,7 +9,7 @@ class socky_boy:
 
         # Define the port on which you want to connect
         port = 12343
-
+        self.s.setblocking(0)
         # connect to the server on local computer
         self.s.connect(("10.5.108.240", port))
 
@@ -21,4 +21,10 @@ class socky_boy:
 
     def close(self):
         self.s.close()
+        
+    def sendMove(self, x, y):
+        self.s.send((str(x) + "," + str(y)).encode())
+    
+    def awaitMove(self):
+        return self.s.recv(1024).decode().split(",")
 

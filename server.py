@@ -10,7 +10,7 @@ class server_boy:
 
         # reserve a port on your computer in our
         port = 12343			
-
+        self.s.setblocking(0)
         # Next bind to the port
         # we have not typed any ip in the ip field
         # instead we have inputted an empty string
@@ -18,6 +18,7 @@ class server_boy:
         # coming from other computers on the network
         self.s.bind(('', port))		
         print ("socket binded to %s" %(port))
+
 
         # put the socket into listening mode
         self.s.listen(5)	
@@ -32,6 +33,12 @@ class server_boy:
 
     def recvTest(self):
         print(self.c.recv(1024).decode())
+        
+    def sendMove(self, x, y):
+        self.c.send((str(x) + "," + str(y)).encode())
+        
+    def awaitMove(self):
+        return self.c.recv(1024).decode().split(",")
         
     def close(self):
         self.s.close()
