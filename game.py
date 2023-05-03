@@ -152,11 +152,10 @@ while running:
                 return_value, num = game.checkBoard(x, y, player_type)
                 if return_value != -1:
                     pygame.display.update()
-                   
+                    print("num is " + str(num))
                     server.sendMove(num)
                     responce = server.awaitMove()
                     game.isPlayerOne = not game.isPlayerOne
-                    print("big daddy pizza " + responce)
                     # server.recvTest()
             else:
                 x, y = pygame.mouse.get_pos()
