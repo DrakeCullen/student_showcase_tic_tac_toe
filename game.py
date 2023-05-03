@@ -156,7 +156,7 @@ while running:
                     server.sendMove(num)
                     responce = server.awaitMove()
                     game.isPlayerOne = not game.isPlayerOne
-                    # server.recvTest()
+                    print("responce " + str(responce))
             else:
                 x, y = pygame.mouse.get_pos()
                 return_value, num = game.checkBoard(x, y, player_type)
@@ -173,11 +173,8 @@ while running:
                 server.getConnection()
                 server.sendHi()
             if event.key == pygame.K_a and player_type == 2:
-                client.sendTest()
                 responce = client.awaitMove()
                 game.isPlayerOne = not game.isPlayerOne
                 print(responce)
-            if event.key == pygame.K_a and player_type == 1:
-                server.recvTest()
 
         pygame.display.update()
