@@ -89,22 +89,25 @@ class Game:
             return True
         return False
 
+    def update_board(self, num):
+        self.board[num[0]][num[1]] = 1 if self.isPlayerOne else 2
+        self.isPlayerOne = not self.isPlayerOne
+        if self.is_over():
+            print("Game Over")
+            self.reset()
+        return 0, num
+
     def checkBoard(self, x, y, player_type):
         if player_type == 1:
             if self.isPlayerOne == False:
-                return -1, (-1,-1)
+                return -1, (-1, -1)
         elif player_type == 2:
             if self.isPlayerOne == True:
-                return -1, (-1,-1)
+                return -1, (-1, -1)
         for square in squares:
             update, num = square.isClicked(x, y, self.isPlayerOne)
             if update:
-                self.board[num[0]][num[1]] = 1 if self.isPlayerOne else 2
-                self.isPlayerOne = not self.isPlayerOne
-                if self.is_over():
-                    print("Game Over")
-                    self.reset()
-                return 0, num
+                return self.update_board(num)
 
 
 def draw_squares():
@@ -155,6 +158,7 @@ while running:
                     print("num is " + str(num))
                     server.sendMove(num)
                     responce = server.awaitMove()
+                    game.update_board(responce)
                     game.isPlayerOne = not game.isPlayerOne
                     print("responce " + str(responce))
             else:
@@ -165,6 +169,7 @@ while running:
                     pygame.display.update()
                     client.sendMove(num)
                     responce = client.awaitMove()
+                    game.update_board(responce)
                     game.isPlayerOne = not game.isPlayerOne
                     print(responce)
 
