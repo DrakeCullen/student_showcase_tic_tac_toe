@@ -158,9 +158,9 @@ while running:
                     print("num is " + str(num))
                     server.sendMove(num)
                     responce = server.awaitMove()
-                    Square.isClicked("sdfdf",x, y, game.isPlayerOne)
+                    squares[0].isClicked("sdfdf", x, y, game.isPlayerOne)
                     game.update_board(responce)
-                    #game.isPlayerOne = not game.isPlayerOne
+                    # game.isPlayerOne = not game.isPlayerOne
                     print("responce " + str(responce))
             else:
                 x, y = pygame.mouse.get_pos()
@@ -170,9 +170,9 @@ while running:
                     pygame.display.update()
                     client.sendMove(num)
                     responce = client.awaitMove()
-                    Square.isClicked("sdfsd",x, y, game.isPlayerOne)
+                    squares[0].isClicked("sdfsd", x, y, game.isPlayerOne)
                     game.update_board(responce)
-                    #game.isPlayerOne = not game.isPlayerOne
+                    # game.isPlayerOne = not game.isPlayerOne
                     print(responce)
 
         if event.type == KEYDOWN:
@@ -183,6 +183,6 @@ while running:
                 responce = client.awaitMove()
                 print("did we get here")
                 game.update_board(responce)
-                #game.isPlayerOne = not game.isPlayerOne
+                # game.isPlayerOne = not game.isPlayerOne
                 print(responce)
         pygame.display.update()
