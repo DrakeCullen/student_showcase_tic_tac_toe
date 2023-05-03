@@ -96,11 +96,11 @@ class Game:
         elif player_type == 2:
             if self.isPlayerOne == True:
                 return -1, -1
-        print("MADE IT HERE")
         for square in squares:
             update, num = square.isClicked(x, y, self.isPlayerOne)
             if update:
                 self.board[num[0]][num[1]] = 1 if self.isPlayerOne else 2
+                print(self.board)
                 self.isPlayerOne = not self.isPlayerOne
                 if self.is_over():
                     print("Game Over")
@@ -153,6 +153,7 @@ while running:
                 return_value, num = game.checkBoard(x, y, player_type)
                 if return_value != -1:
                     pygame.display.update()
+                    print("num is " + str(num))
                     server.sendMove(num)
                     responce = server.awaitMove()
                     print(responce)
