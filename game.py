@@ -160,13 +160,14 @@ while running:
                     print("num is " + str(num))
                     server.sendMove(num)
                     responce = server.awaitMove()
-                    _, _ = game.checkBoard(
+                    """ _, _ = game.checkBoard(
                         squares[3 * responce[0] + responce[1]].x,
                         squares[3 * responce[0] + responce[1]].y,
-                        not player_type,
+                        game.isPlayerOne,
                     )
+                    pygame.display.update() """
+                    squares[3*responce[0]+responce[1]].isClicked(x, y, game.isPlayerOne)
                     pygame.display.update()
-                    # squares[3*num[0]+num[1]].isClicked(x, y, game.isPlayerOne)
                     game.update_board(responce)
                     # game.isPlayerOne = not game.isPlayerOne
                     print("responce " + str(responce))
@@ -178,13 +179,13 @@ while running:
                     pygame.display.update()
                     client.sendMove(num)
                     responce = client.awaitMove()
-                    _, _ = game.checkBoard(
+                    """ _, _ = game.checkBoard(
                         squares[3 * responce[0] + responce[1]].x,
                         squares[3 * responce[0] + responce[1]].y,
                         not player_type,
-                    )
+                    ) """
+                    squares[3*responce[0]+responce[1]].isClicked(x, y, game.isPlayerOne)
                     pygame.display.update()
-                    # squares[3*num[0]+num[1]].isClicked(x, y, game.isPlayerOne)
                     game.update_board(responce)
                     # game.isPlayerOne = not game.isPlayerOne
                     print(responce)
@@ -198,11 +199,13 @@ while running:
                 print("did we get here")
                 game.update_board(responce)
                 pygame.display.update()
-                _, _ = game.checkBoard(
+                """ _, _ = game.checkBoard(
                     squares[3 * responce[0] + responce[1]].x,
                     squares[3 * responce[0] + responce[1]].y,
                     not player_type,
                 )
+                pygame.display.update() """
+                squares[3*responce[0]+responce[1]].isClicked(x, y, game.isPlayerOne)
                 pygame.display.update()
                 # game.isPlayerOne = not game.isPlayerOne
                 print(responce)
