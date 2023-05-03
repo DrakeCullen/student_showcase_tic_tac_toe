@@ -2,6 +2,7 @@
 
 import socket
 
+
 class socky_boy:
     # Create a socket object
     def __init__(self) -> None:
@@ -15,16 +16,15 @@ class socky_boy:
 
         # receive data from the server and decoding to get the string.
         print(self.s.recv(1024).decode())
-    
+
     def sendTest(self):
         self.s.send("test".encode())
 
     def close(self):
         self.s.close()
-        
-    def sendMove(self, x, y):
-        self.s.send((str(x) + "," + str(y)).encode())
-    
-    def awaitMove(self):
-        return self.s.recv(1024).decode().split(",")
 
+    def sendMove(self, num):
+        self.s.send((str(num)).encode())
+
+    def awaitMove(self):
+        return self.s.recv(1024).decode()

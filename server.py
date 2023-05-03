@@ -34,11 +34,11 @@ class server_boy:
     def recvTest(self):
         print(self.c.recv(1024).decode())
         
-    def sendMove(self, x, y):
-        self.c.send((str(x) + "," + str(y)).encode())
+    def sendMove(self, num):
+        self.c.send((str(num)).encode())
         
     def awaitMove(self):
-        return self.c.recv(1024).decode().split(",")
+        return self.c.recv(1024).decode()
         
     def close(self):
         self.s.close()
