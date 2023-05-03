@@ -179,7 +179,7 @@ while running:
                 server.sendHi()
             if event.key == pygame.K_a and player_type == 2:
                 responce = client.awaitMove()
-                game.isPlayerOne = not game.isPlayerOne
+                #game.isPlayerOne = not game.isPlayerOne
                 print(responce)
 
         pygame.display.update()
